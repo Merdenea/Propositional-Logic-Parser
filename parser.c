@@ -5,18 +5,9 @@
 int Fsize=50;
 int inputs=6;
 
-
 int i;
 int j;
 
-
-/*put all your functions here.  You will need
-1.
-int parse(char *g) which returns 1 if a proposition, 2 if neg, 3 if binary, ow 0
-Of course you will almost certainly need other functions.
-
-You may vary this program provided it reads 6 formulas in a file called "input.txt" and outputs in the way indicated below to a file called "output.txt".
-*/
 
 int isProp(char c)
 {
@@ -24,6 +15,8 @@ int isProp(char c)
         return 1;
     return 0;
 }
+
+
 int isNegation(char *g)
 {
     if (g[0] == '-')
@@ -45,13 +38,12 @@ int isValid(char *g)
     if (isProp(g[0]) && g[1] == '\0')
         return 1;
     if (isNegation(g)){
-        printf("here \n");
         int length = strlen(g);
         char *c = (char*)malloc(sizeof(char) * (length -1));
         int i;
         for (i = 0; i < length; i++)
             c[i] = g[i + 1];
-        c[i] = '\0'; // flag here
+        c[i] = '\0';
         return isValid(c);
     }
     if (g[0] == '(' && g[strlen(g) - 1] == ')')
@@ -86,7 +78,6 @@ int isValid(char *g)
     }
     return 0;
 }
-
 
 
 int parse(char *g)
@@ -130,8 +121,6 @@ int main()
 	default:fprintf(fpout,"%s is not a formula\n",names[i]);break;
 	}
     }
- 
- 
   fclose(fp);
   fclose(fpout);
  
