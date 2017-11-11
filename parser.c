@@ -2,7 +2,7 @@
 #include <string.h>   /* for all the new-fangled string functions */
 #include <stdlib.h>     /* malloc, free, rand */
 
-int Fsize=50;
+int Fsize=100;
 int inputs=6;
 
 int i;
@@ -67,14 +67,16 @@ int isValid(char *g)
         }
         if (operatorIndex == -1) return 0;
         char *c = (char*)malloc(sizeof(char) * (operatorIndex - 1));
-        char *d = (char*)malloc(sizeof(char) * (length -operatorIndex - 2));
+        char *d = (char*)malloc(sizeof(char) * (length - operatorIndex - 2));
         for (i = 0; i < operatorIndex - 1; i++)
             c[i] = g[i+1];
         c[i] = '\0';
         for (i = 0; i < length - operatorIndex - 2; i++)
             d[i] = g[i + operatorIndex + 1];
         d[i] = '\0';
-        return isValid(c) && isValid(d);
+        return (isValid(c) && isValid(d));
+        free(c);
+        free(d);
     }
     return 0;
 }
@@ -123,6 +125,5 @@ int main()
     }
   fclose(fp);
   fclose(fpout);
- 
   return(0);
 }
