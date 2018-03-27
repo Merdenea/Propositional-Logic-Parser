@@ -9,6 +9,7 @@ int i;
 int j;
 
 
+
 int isProp(char c)
 {
     if (c == 'p' || c == 'q' || c == 'r') 
@@ -101,9 +102,6 @@ int main()
   char *names[inputs];/*to store each of the input strings*/
 
   for (i=0;i<inputs;i++) names[i]=malloc(Fsize);/*create enough space*/
-
-
-
   FILE *fp, *fpout, *fopen();
 
   if ((  fp=fopen("input.txt","r"))==NULL){printf("Error opening file");exit(1);}
